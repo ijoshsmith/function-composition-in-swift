@@ -144,7 +144,24 @@ let attributedHTMLForCompany = url(forCompany:) -->? data(fromURL:) -->? attribu
 
 let html = attributedHTMLForCompany("AAPL")
 ```
-If any of the functions return `nil`, none of the subsequent functions will be called. This is a nice Swifty addition to our  function composition toolbox. Remember, the `-->` and `-->?` operators can be used together.
+If any of the functions return `nil`, none of the subsequent functions will be called. This is a nice Swifty addition to our  function composition toolbox. Remember, the `-->` and `-->?` operators can both be used when forming larger statements.
+## Passing multiple arguments
+All of the examples so far have composed functions with just one parameter, but it's possible to
+use functions with multiple of parameters. One way this can be accomplished is to wrap the function 
+call in a closure, as seen in the following example.
+```swift
+func getHour(fromDate date: Date) -> Int {
+    return Calendar.current.component(.hour, from: date)
+}
 
+func isHour(_ hour: Int, between startHour: Int, and endHour: Int) -> Bool {
+    return (startHour...endHour).contains(hour)
+}
+
+let isWorkHour = getHour(fromDate:) --> { isHour($0, between: 9, and: 17) }
+
+let now = Date()
+let shouldBeAtWork = isWorkHour(now)
+```
 ## Have fun
 That's all for this quick excursion into the world of function composition. It's definitely not a silver bullet, but it can lead to code that is easier to read and understand. Perhaps this style of coding feels right to you. If so, give it a try!
