@@ -5,9 +5,9 @@ This exploration of function composition in Swift is also available in an Xcode 
 ## Getting started
 Suppose you need to process comma-separated values. You receive some CSV text and need to only keep the rows that contain exactly three values. Here is the CSV text to process.
 ```
-A,B,C
-D,E,F
-G,H
+Ace,Ale,Are
+Bag,Beg,Bug
+Car,Cat
 ```
 The last row (G,H) is invalid because it has only two values.
 
