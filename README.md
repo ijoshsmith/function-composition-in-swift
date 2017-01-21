@@ -147,7 +147,7 @@ let html = attributedHTMLForCompany("AAPL")
 If any of the functions return `nil`, none of the subsequent functions will be called. This is a nice Swifty addition to our  function composition toolbox. Remember, the `-->` and `-->?` operators can both be used when forming larger statements.
 ## Passing multiple arguments
 All of the examples so far have composed functions with just one parameter, but it's possible to
-use functions with multiple of parameters. One way this can be accomplished is to wrap the function 
+use functions with multiple parameters. One way this can be accomplished is to wrap the function 
 call in a closure, as seen in the following example.
 ```swift
 func getHour(fromDate date: Date) -> Int {
