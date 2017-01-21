@@ -9,7 +9,7 @@ Ace,Ale,Are
 Bag,Beg,Bug
 Car,Cat
 ```
-The last row (G,H) is invalid because it has only two values.
+The last row (Car,Cat) is invalid because it has two values.
 
 The following functions would do the trick.
 ```swift
