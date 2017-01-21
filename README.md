@@ -2,6 +2,7 @@
 
 This exploration of function composition in Swift is also available in an Xcode playground file, which allows you to experiment with the presented code and immediately see the result. The playground can be downloaded from this repository.
 
+## Getting started
 Suppose you need to process comma-separated values. You receive some CSV text and need to only keep the rows that contain exactly three values. Here is the CSV text to process.
 ```
 A,B,C
@@ -43,7 +44,8 @@ let huh = removeInvalidRows(fromRows: createRows(fromLines: splitLines(ofText: c
 The code above is somewhat confusing because the functions appear in the opposite order from which they run. It's like reading a story backwards. It'd be nice to avoid extra variables without adding extra weirdness.
 
 What's a Swift developer to do?
- 
+
+## Function composition
 Let's take a page from the functional programmer's book and use function composition! Composing two functions yields a new function, which wraps them both up. It's simple. The following code creates a new operator that we can put between two functions and it composes a new function. Ignore the `AdditionPrecedence` bit for now.
 ```swift
 infix operator --> :AdditionPrecedence
@@ -68,7 +70,8 @@ let processCSV = splitLines(ofText:) --> createRows(fromLines:) --> removeInvali
 let validRows = processCSV(csv)
 ```
 That's pretty nice! The `processCSV` function is the result of composing three functions. The composed functions run in the same order they appear when defining `processCSV`. Note that the `-->` operator is left associative, meaning the functions compose in left-to-right order. This is why I used `AdditionPrecedence` when declaring the operator. It means `-->` has the same precedence and associativity as the standard `+` operator.
- 
+
+## Allowing for side effects
 This all seems fine and dandy, but does it make debugging tricky? How can you inspect a function's return value when using function composition? One approach is to add logging statements to the functions being composed, but that only works if you can edit those functions, which isn't always the case. There's a better way, check it out.
 ```swift
 func --> <A, B> (
@@ -96,6 +99,7 @@ let processCSVWithLogging = splitLines(ofText:)
 
 let validRows = processCSVWithLogging(csv)
 ```
+## Optional chaining
 The function composition operator works fine with optional values, since `Optional<T>` is a Swift enum and can be used in a generic function just like any other type. But it would be nice if there was extra support for working with optional values when using function composition, similar to the optional chaining feature in Swift. For example, `account.emergencyContact?.sendAlert()` will only send an alert to an emergency contact if one exists.
 
 Here is a new variant of the function composition operator that supports optional chaining. The function on the left returns an optional value, and the function on the right will only be called if that value is non-nil.
@@ -142,4 +146,5 @@ let html = attributedHTMLForCompany("AAPL")
 ```
 If any of the functions return `nil`, none of the subsequent functions will be called. This is a nice Swifty addition to our  function composition toolbox. Remember, the `-->` and `-->?` operators can be used together.
 
-That's all for this quick excursion into the world of function composition. Perhaps this style of coding feels right to you. If so, give it a try!
+## Have fun
+That's all for this quick excursion into the world of function composition. It's definitely not a silver bullet, but it can lead to code that is easier to read and understand. Perhaps this style of coding feels right to you. If so, give it a try!
