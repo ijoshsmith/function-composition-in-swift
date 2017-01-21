@@ -190,7 +190,7 @@ let html = attributedHTMLForCompany("???") // Pass AAPL, or GOOGL, or MSFT to do
  be used when forming larger statements.
  
  All of the examples so far have composed functions with just one parameter, but it's possible to
- use functions with multiple of parameters. One way this can be accomplished is to wrap the function 
+ use functions with multiple parameters. One way this can be accomplished is to wrap the function 
  call in a closure, as seen in the following example.
  */
 func getHour(fromDate date: Date) -> Int {
