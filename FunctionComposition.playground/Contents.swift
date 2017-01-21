@@ -28,7 +28,7 @@ func removeInvalidRows(fromRows rows: [[String]]) -> [[String]] {
 }
 
 /*
- Here is the CSV text to process. The last row (Car,Cat) is invalid because it has two values.
+ Here is the CSV text to process. The last row (Cat,Cut) is invalid because it has two values.
  Ace,Ale,Are
  Bag,Beg,Bug
  Car,Cat
@@ -36,7 +36,7 @@ func removeInvalidRows(fromRows rows: [[String]]) -> [[String]] {
 let csv: String = [
     "Ace,Ale,Are",
     "Bag,Beg,Bug",
-    "Car,Cat"
+    "Cat,Cut"
     ].joined(separator: "\n")
 
 /*

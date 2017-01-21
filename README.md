@@ -7,9 +7,9 @@ Suppose you need to process comma-separated values. You receive some CSV text an
 ```
 Ace,Ale,Are
 Bag,Beg,Bug
-Car,Cat
+Cat,Cut
 ```
-The last row (Car,Cat) is invalid because it has two values.
+The last row (Cat,Cut) is invalid because it has two values.
 
 The following functions would do the trick.
 ```swift
