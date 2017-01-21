@@ -1,6 +1,6 @@
 # Function Composition in Swift
 
-This exploration of function composition in Swift is also available in an Xcode playground file, which allows you to experiment with the presented code and immediately see the result. The playground can be downloaded from this repository.
+This exploration of function composition in Swift is also available in an Xcode playground, which allows you to experiment with the presented code and immediately see the result. The playground is included in this repository.
 
 ## Getting started
 Suppose you need to process comma-separated values. You receive some CSV text and need to only keep the rows that contain exactly three values. Here is the CSV text to process.
